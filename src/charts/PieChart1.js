@@ -7,14 +7,14 @@ const PieChart1 = () => {
     const chartInstance = useRef(null);
     const [data, setData] = useState([]);
 
-    const fetchData = async () => {
-        try {
-            const response = await service.fetchData();
-            setData(response);
-        } catch (error) {
-            console.error('Error fetching user data:', error);
-        }
-    };
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await service.fetchData();
+    //         setData(response);
+    //     } catch (error) {
+    //         console.error('Error fetching user data:', error);
+    //     }
+    // };
 
     const country = [];
     const legend = ['FR'];
@@ -37,7 +37,7 @@ const PieChart1 = () => {
     ];
 
     useEffect(() => {
-        fetchData();
+        // fetchData();
         const data = {
             labels: country,
             datasets: [{

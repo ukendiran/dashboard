@@ -37,7 +37,7 @@ const BarChart = () => {
     ];
 
     useEffect(() => {
-        fetchData();
+        // fetchData();
         const data = {
             labels: country,
             datasets: [
