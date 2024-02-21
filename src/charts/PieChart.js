@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import service from '../services/apiService'; // Adjust the path as needed
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 const PieChart = () => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
@@ -41,7 +41,7 @@ const PieChart = () => {
         const data = {
             labels: country,
             datasets: [{
-                label: 'My First Dataset',
+                label: 'CH',
                 data: [300, 50, 100],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
@@ -54,10 +54,52 @@ const PieChart = () => {
 
         const options = {
             scales: {
-                y: {
-                    beginAtZero: true
+                yAxes: [{
+                    ticks: {
+                        display: false
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        display: true
+                    }
+                }]
+            },
+            plugins: {
+                datalabels: {
+                    color: "#fff",
+                    font: {
+                        weight: 'bold',
+                        size: 18,
+                    },
+                    display: true,
+                    align: 'center',
+                    anchor: 'center',
+                    formatter: function (value, index, values) {
+              
+                        if (value > 0) {
+                            // const datapoints = context.chart.data.datasets[0].data;
+
+
+                            // function totalSum(total, datapoint) {
+                            //     return total + datapoint;
+                            // }
+                            // const totalvalue = datapoints.reduce(totalSum(), 0);
+                            // const percentageValue = (value / totalvalue * 100);
+
+                            value = value.toString();
+                            value = value.split(/(?=(?:...)*$)/);
+                            value = value.join(',');
+                            // return value + "(" + percentageValue + ")";
+                            return value;
+
+                        } else {
+                            value = "";
+                            return value;
+                        }
+                    }
                 }
-            }
+            },
         };
 
         if (chartRef && chartRef.current) {
@@ -69,9 +111,23 @@ const PieChart = () => {
             chartInstance.current = new Chart(ctx, {
                 type: 'pie',
                 data: data,
-                // options: options
+                options: options,
+                plugins: [ChartDataLabels],
             });
         }
+
+        function createTable() {
+            console.log('trigered');
+            const chartBox = document.querySelector('.chartBox');
+            const tableDiv = document.createElement('dive');
+            const table = document.createElement('table');
+            table.classList.add('chartjs-table');
+
+
+            tableDiv.setAttribute('id', 'tableDiv');
+            chartBox.appendChild(tableDiv);
+            tableDiv.appendChild(table);
+        };
 
         // Clean up function
         return () => {

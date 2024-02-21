@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import service from '../services/apiService'; // Adjust the path as needed
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 const PieChart2 = () => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
@@ -41,7 +41,7 @@ const PieChart2 = () => {
         const data = {
             labels: country,
             datasets: [{
-                label: 'My First Dataset',
+                label: 'SA',
                 data: [50],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
@@ -54,10 +54,35 @@ const PieChart2 = () => {
 
         const options = {
             scales: {
-                y: {
-                    beginAtZero: true
+                yAxes: [{
+                    ticks: {
+                        display: false
+                    }
+                }]
+            },
+            plugins: {
+                datalabels: {
+                    color: "#fff",
+                    font: {
+                        weight: 'bold',
+                        size: 18,
+                    },
+                    display: true,
+                    align: 'center',
+                    anchor: 'center',
+                    formatter: function (value, index, values) {
+                        if (value > 0) {
+                            value = value.toString();
+                            value = value.split(/(?=(?:...)*$)/);
+                            value = value.join(',');
+                            return value;
+                        } else {
+                            value = "";
+                            return value;
+                        }
+                    }
                 }
-            }
+            },
         };
 
         if (chartRef && chartRef.current) {
@@ -68,7 +93,9 @@ const PieChart2 = () => {
             const ctx = chartRef.current.getContext('2d');
             chartInstance.current = new Chart(ctx, {
                 type: 'pie',
-                data: data,              
+                data: data,  
+                options: options,
+                plugins: [ChartDataLabels],            
             });
         }
 
