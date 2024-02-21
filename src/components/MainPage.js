@@ -1,10 +1,10 @@
 import BarChart from '../charts/BarChart';
-import BarChart1 from '../charts/BarChart1';
 import PieChart from '../charts/PieChart';
-import PieChart1 from '../charts/PieChart1';
-import PieChart2 from '../charts/PieChart2';
 import React from 'react'
 import { FilterComponent } from './FilterComponent';
+import { barchartDataset2, barchartDataset1 } from '../utils/barchartutils';
+import { pie1, pie1data, pie2, pie2data, pie3, pie3data } from '../utils/piechart';
+
 
 
 export const MainPage = () => {
@@ -23,7 +23,7 @@ export const MainPage = () => {
                         <div className='card shadow p-3 bg-white rounded'>
                             <div className='card-body'>
                                 <h5 className="card-title">Discrepancies - Bar Chart</h5>
-                                <BarChart />
+                                <BarChart bardataset={barchartDataset1} />
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ export const MainPage = () => {
                         <div className='card shadow p-3 bg-white rounded'>
                             <div className='card-body'>
                                 <h5 className="card-title">Discrepancies - Bar Chart</h5>
-                                <BarChart1 />
+                                <BarChart bardataset={barchartDataset2} />
                             </div>
                         </div>
                     </div>
@@ -43,18 +43,18 @@ export const MainPage = () => {
                                 <h5 className="card-title">Discrepancies - Pie Chart</h5>
                                 <div className='row'>
                                     <div className='col-md-6 mt-5'>
-                                        <PieChart />
+                                        <PieChart label={pie1} datapoints={pie1data} />
                                     </div>
                                     <div className='col-md-6 mt-5'>
-                                        <PieChart1 />
+                                        <PieChart label={pie2} datapoints={pie2data} />
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='col-md-6 mt-5'>
-                                        <PieChart2 />
+                                        <PieChart label={pie3} datapoints={pie3data} />
                                     </div>
                                     <div className='col-md-6 mt-5'>
-                                        <PieChart />
+                                        <PieChart label={pie1} datapoints={pie1data} />
                                     </div>
                                 </div>
                             </div>

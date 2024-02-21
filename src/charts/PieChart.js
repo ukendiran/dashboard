@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import service from '../services/apiService'; // Adjust the path as needed
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-const PieChart = () => {
+const PieChart = ({label,datapoints}) => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
     const [data, setData] = useState([]);
@@ -27,22 +27,15 @@ const PieChart = () => {
         'rgba(255, 159, 64, 0.2)'
     ];
 
-    const borderColor = [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-    ];
+    
 
     useEffect(() => {
         // fetchData();
         const data = {
             labels: country,
             datasets: [{
-                label: 'CH',
-                data: [300, 50, 100],
+                label: label,
+                data: datapoints,
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
