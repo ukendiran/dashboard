@@ -13,8 +13,12 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import GridViewIcon from '@mui/icons-material/GridView';
-import { MainPage } from './MainPage';
+ import { MainPage } from './MainPage';
+import NewCharts from './NewCharts';
+import { Link, Route, Routes } from 'react-router-dom';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import AddchartIcon from '@mui/icons-material/Addchart';
+
 const drawerWidth = 240;
 function MasterLayout(props) {
     const { window } = props;
@@ -35,24 +39,37 @@ function MasterLayout(props) {
             setMobileOpen(!mobileOpen);
         }
     };
-    const icons = [<GridViewIcon />];
-    const menuItems = ['Dashboard'];
+     const menuItems = [{
+        id: 1,
+        label: "Dashboard",
+        path: "/",
+        icon: <SpaceDashboardIcon />
 
+    },
+    {
+        id: 2,
+        label: "New Chart",
+        path: "/new-chart",
+        icon: <AddchartIcon />
+
+    },
+    ]
+    console.log(menuItems)
     const drawer = (
         <div>
             <Toolbar />
             <Divider />
             <List>
-                {menuItems.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {icons[index]}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+            {menuItems.map((text, index) => (
+                <ListItem key={index} disablePadding>
+                    <ListItemButton  component={Link} to={text.path}>
+                        <ListItemIcon>
+                            {text.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={text.label} />
+                    </ListItemButton>
+                </ListItem>
+            ))}
             </List>
 
         </div>
@@ -125,7 +142,11 @@ function MasterLayout(props) {
             >
                 <Toolbar />
 
-                <MainPage />
+                <Routes>
+                    <Route path="" element={<MainPage />}></Route>
+                    <Route path="new-chart" element={<NewCharts />}></Route>
+
+                </Routes>
 
             </Box>
         </Box>

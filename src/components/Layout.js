@@ -2,26 +2,18 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import GridViewIcon from '@mui/icons-material/GridView';
 import { MainPage } from './MainPage';
+import logo from "../assets/logo.png"
+import { drawer } from './constant';
 const drawerWidth = 240;
 
 
-
-
 function MasterLayout(props) {
-
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -41,30 +33,11 @@ function MasterLayout(props) {
             setMobileOpen(!mobileOpen);
         }
     };
-    const icons = [<GridViewIcon />];
-    const menuItems = ['Dashboard'];
 
-    const drawer = (
-        <div>
-            <Toolbar />
-            <Divider />
-            <List>
-                {menuItems.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {icons[index]}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+  
 
-        </div>
-    );
+   
 
-    // Remove this const when copying and pasting into your project.
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
@@ -84,7 +57,7 @@ function MasterLayout(props) {
                         <MenuIcon />
                     </IconButton>
 
-                    <img src="http://localhost:3000/Novartis-Logo.png" alt="Logo" style={{ marginBottom: "5px", width: 130, height: 'auto', marginRight: 10 }} />
+                    <img src={logo} alt="Logo" style={{ marginBottom: "5px", width: 130, height: 'auto', marginRight: 10 }} />
 
                     <Typography variant="h6" component="div" sx={{ marginRight: 7, flexGrow: 1, textAlign: 'center' }}>
                         Data Reconciliation Dashboard
@@ -97,7 +70,6 @@ function MasterLayout(props) {
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
                     container={container}
                     variant="temporary"
@@ -105,7 +77,7 @@ function MasterLayout(props) {
                     onTransitionEnd={handleDrawerTransitionEnd}
                     onClose={handleDrawerClose}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true,
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },

@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MasterLayout />} />
+        <Route path="/*" element={<MasterLayout />} />
       </Routes>
     </Router>
   );

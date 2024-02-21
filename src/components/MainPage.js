@@ -1,44 +1,19 @@
-import MenuItem from '@mui/material/MenuItem';
 import BarChart from '../charts/BarChart';
 import BarChart1 from '../charts/BarChart1';
 import PieChart from '../charts/PieChart';
 import PieChart1 from '../charts/PieChart1';
 import PieChart2 from '../charts/PieChart2';
-import Select from '@mui/material/Select';
- import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import React from 'react'
+import { FilterComponent } from './FilterComponent';
+
+
 export const MainPage = () => {
-
-    const [age, setAge] = React.useState('');
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
-
-
     return (
-        <div className="dashboard">
+        <React.Fragment>
             <div className="row">
                 <div className='col-md-6'></div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                <FormControl sx={{ m: 1, minWidth: 220 }}>
-        <InputLabel id="demo-simple-select-helper-label">Select Country</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-helper-label"
-                            id="demo-simple-select-helper"
-                            value={age}
-                            label="Select Country"
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={'Germany'}>Germany</MenuItem>
-                            <MenuItem value={'France'}>France</MenuItem>
-                            <MenuItem value={'India'}>India</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <FilterComponent />
                 </div>
             </div>
             <div className="container">
@@ -143,7 +118,6 @@ export const MainPage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </React.Fragment>
     )
 }
- 
