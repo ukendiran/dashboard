@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import service from '../services/apiService'; // Adjust the path as needed
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 const BarChart = () => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
@@ -16,7 +16,7 @@ const BarChart = () => {
         }
     };
 
-    const legend = ["First_Name", "WD_COSTCENTER_ID", "WD_POSITIONID", "WD_PAYGROUP_ID", "WD_COSTCENTER_ID"];
+    const legend = ["First Name", "Cost Reference ID", "Cost Reference ID,Position Reference ID", "Pay Group Reference ID"];
     const country = ['CH', 'FR', 'SA'];
     const backgroundColor = [
         'rgba(255, 99, 132, 0.2)',
@@ -43,7 +43,7 @@ const BarChart = () => {
             datasets: [
                 {
                     label: legend[0],
-                    data: [1, 0, 0],
+                    data: [1, 2, 3],
                     backgroundColor: backgroundColor[0],
                     borderColor: borderColor[0],
                     borderWidth: 1
@@ -69,22 +69,35 @@ const BarChart = () => {
                     borderColor: borderColor[3],
                     borderWidth: 1
                 },
-                {
-                    label: legend[4],
-                    data: [0, 0, 0],
-                    backgroundColor: backgroundColor[4],
-                    borderColor: borderColor[4],
-                    borderWidth: 1
-                },
+               
             ]
         };
 
         const options = {
             scales: {
+
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+                datalabels: {
+                    display: true,
+                    align: 'center',
+                    anchor: 'center',
+                    formatter: function (value, index, values) {
+                        if (value > 0) {
+                            value = value.toString();
+                            value = value.split(/(?=(?:...)*$)/);
+                            value = value.join(',');
+                            return value;
+                        } else {
+                            value = "";
+                            return value;
+                        }
+                    }
+                }
+            },
         };
 
         if (chartRef && chartRef.current) {
@@ -97,7 +110,9 @@ const BarChart = () => {
             chartInstance.current = new Chart(ctx, {
                 type: 'bar',
                 data: data,
-                options: options
+                options: options,
+                plugins: [ChartDataLabels],
+
             });
         }
 
@@ -109,7 +124,9 @@ const BarChart = () => {
         };
     }, []);
 
-    return <canvas ref={chartRef} />;
+    return (<>
+        <canvas ref={chartRef} />
+    </>);
 };
 
 export default BarChart;

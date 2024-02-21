@@ -17,15 +17,17 @@ const Dashboard = () => {
                 <Header />
                 <div className='row'>
                     <div className='col-md-6'>
-                        <div className='card'>
+                        <div className='card shadow p-3 bg-white rounded'>
                             <div className='card-body'>
+                            <h5 class="card-title">Discrepancies</h5>
                                 <BarChart />
                             </div>
                         </div>
                     </div>
                     <div className='col-md-6'>
-                        <div className='card'>
+                        <div className='card shadow p-3 bg-white rounded'>
                             <div className='card-body'>
+                                <h5 class="card-title">Discrepancies</h5>
                                 <BarChart1 />
                             </div>
                         </div>
@@ -33,10 +35,12 @@ const Dashboard = () => {
                 </div>
                 <div className='row'>
                     <div className='col-md-6 mt-5'>
-                        <div className='card'>
+                        <div className='card shadow p-3 bg-white rounded'>
                             <div className='card-body'>
+                            <h5 class="card-title">Discrepancies</h5>
                                 <div className='row'>
                                     <div className='col-md-6 mt-5'>
+                                        
                                         <PieChart />
                                     </div>
                                     <div className='col-md-6 mt-5'>
@@ -55,8 +59,9 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className='col-md-6 mt-5'>
-                        <div className='card'>
+                        <div className='card shadow p-3 bg-white rounded'>
                             <div className='card-body'>
+                            <h5 class="card-title">Discrepancies</h5>
                                 <div className='row'>
                                     <div className='col-md-6 mt-5'>
                                         <div className='card'>
@@ -72,7 +77,7 @@ const Dashboard = () => {
                                         <div className='card'>
                                             <div className='card'>
                                                 <div className='card-body text-center'>
-                                                    <h5>WD_COSTCENTER_ID</h5>
+                                                    <h5>Cost Reference ID</h5>
                                                     <p>FR</p>
                                                 </div>
                                             </div>
@@ -84,7 +89,7 @@ const Dashboard = () => {
                                         <div className='card'>
                                             <div className='card'>
                                                 <div className='card-body text-center'>
-                                                    <h5>WD_POSITIONID</h5>
+                                                    <h5>Position Reference ID</h5>
                                                     <p>CH</p>
                                                 </div>
                                             </div>
@@ -94,7 +99,7 @@ const Dashboard = () => {
                                         <div className='card'>
                                             <div className='card'>
                                                 <div className='card-body text-center'>
-                                                    <h5>WD_PAYGROUP_ID</h5>
+                                                    <h5>Pay Group Reference ID</h5>
                                                     <p>SA</p>
                                                 </div>
                                             </div>

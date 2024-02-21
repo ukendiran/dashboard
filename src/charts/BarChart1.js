@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import service from '../services/apiService'; // Adjust the path as needed
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 const BarChart1 = () => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
@@ -16,7 +16,7 @@ const BarChart1 = () => {
         }
     };
 
-    const country = ["WD_COSTCENTER_ID", "WD_POSITIONID", "WD_PAYGROUP_ID", "WD_COSTCENTER_ID", "First_Name"];
+    const country = ["First Name", "Cost Reference ID", "Cost Reference ID,Position Reference ID", "Pay Group Reference ID"];
     const legend = ['CH', 'FR', 'SA'];
     const backgroundColor = [
         'rgba(255, 99, 132, 0.2)',
@@ -68,10 +68,29 @@ const BarChart1 = () => {
 
         const options = {
             scales: {
+
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            plugins: {
+                datalabels: {
+                    display: true,
+                    align: 'center',
+                    anchor: 'center',
+                    formatter: function (value, index, values) {
+                        if (value > 0) {
+                            value = value.toString();
+                            value = value.split(/(?=(?:...)*$)/);
+                            value = value.join(',');
+                            return value;
+                        } else {
+                            value = "";
+                            return value;
+                        }
+                    }
+                }
+            },
         };
 
         if (chartRef && chartRef.current) {
@@ -84,7 +103,8 @@ const BarChart1 = () => {
             chartInstance.current = new Chart(ctx, {
                 type: 'bar',
                 data: data,
-                options: options
+                options: options,
+                plugins: [ChartDataLabels],
             });
         }
 
