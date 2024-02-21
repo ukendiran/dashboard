@@ -37,7 +37,7 @@ const PieChart = () => {
     ];
 
     useEffect(() => {
-        fetchData();
+        // fetchData();
         const data = {
             labels: country,
             datasets: [{
@@ -76,11 +76,23 @@ const PieChart = () => {
                     align: 'center',
                     anchor: 'center',
                     formatter: function (value, index, values) {
+              
                         if (value > 0) {
+                            // const datapoints = context.chart.data.datasets[0].data;
+
+
+                            // function totalSum(total, datapoint) {
+                            //     return total + datapoint;
+                            // }
+                            // const totalvalue = datapoints.reduce(totalSum(), 0);
+                            // const percentageValue = (value / totalvalue * 100);
+
                             value = value.toString();
                             value = value.split(/(?=(?:...)*$)/);
                             value = value.join(',');
+                            // return value + "(" + percentageValue + ")";
                             return value;
+
                         } else {
                             value = "";
                             return value;
@@ -103,6 +115,19 @@ const PieChart = () => {
                 plugins: [ChartDataLabels],
             });
         }
+
+        function createTable() {
+            console.log('trigered');
+            const chartBox = document.querySelector('.chartBox');
+            const tableDiv = document.createElement('dive');
+            const table = document.createElement('table');
+            table.classList.add('chartjs-table');
+
+
+            tableDiv.setAttribute('id', 'tableDiv');
+            chartBox.appendChild(tableDiv);
+            tableDiv.appendChild(table);
+        };
 
         // Clean up function
         return () => {

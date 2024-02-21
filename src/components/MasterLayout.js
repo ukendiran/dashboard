@@ -16,13 +16,7 @@ import Typography from '@mui/material/Typography';
 import GridViewIcon from '@mui/icons-material/GridView';
 import { MainPage } from './MainPage';
 const drawerWidth = 240;
-
-
-
-
 function MasterLayout(props) {
-
-
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);

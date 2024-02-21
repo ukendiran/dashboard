@@ -37,27 +37,27 @@ const BarChart1 = () => {
     ];
 
     useEffect(() => {
-        fetchData();
+        // fetchData();
         const data = {
             labels: country,
             datasets: [
                 {
                     label: legend[0],
-                    data: [1, 0, 2, 0, 0],
+                    data: [1, 0, 1, 0, 0],
                     backgroundColor: backgroundColor[0],
                     borderColor: borderColor[0],
                     borderWidth: 1
                 },
                 {
                     label: legend[1],
-                    data: [1, 0, 2, 0, 0],
+                    data: [1, 0, 1, 0, 0],
                     backgroundColor: backgroundColor[1],
                     borderColor: borderColor[1],
                     borderWidth: 1
                 },
                 {
                     label: legend[2],
-                    data: [1, 3, 2, 0, 1],
+                    data: [1, 1, 1, 0, 1],
                     backgroundColor: backgroundColor[2],
                     borderColor: borderColor[2],
                     borderWidth: 1
@@ -68,9 +68,16 @@ const BarChart1 = () => {
 
         const options = {
             scales: {
-
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    }
                 }
             },
             plugins: {
