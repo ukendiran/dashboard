@@ -84,7 +84,7 @@ function Dashboard() {
             <div className="card-body">
               <div className="card-title">
                 <h3>Discrepancies - Bar Chart</h3>
-                <PieChart country={country} categories={["China", "France", "South Africa"]} series={[1,2,4]} />
+                <PieChart country={country} categories={["China", "France", "South Africa"]} series={[0,1,1]} />
               </div>
             </div>
           </div>
