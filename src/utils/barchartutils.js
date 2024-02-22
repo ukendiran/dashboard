@@ -15,8 +15,8 @@ const borderColor = [
     'rgba(153, 102, 255, 1)',
     'rgba(255, 159, 64, 1)'
 ];
-const legend = ["First Name", "Cost Reference ID", "Cost Reference ID,Position Reference ID", "Pay Group Reference ID"];
 
+const legend = ["First Name", "Cost Reference ID", "Cost Reference ID,Position Reference ID", "Pay Group Reference ID"];
 
 export const barchartDataset1=
 [

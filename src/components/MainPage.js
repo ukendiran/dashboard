@@ -16,7 +16,7 @@ export const MainPage = () => {
                     <FilterComponent />
                 </div>
             </div>
-            <div className="container">
+            <div className="container-fluid">
 
                 <div className='row'>
                     <div className='col-md-6'>

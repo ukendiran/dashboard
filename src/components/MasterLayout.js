@@ -13,11 +13,16 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
- import { MainPage } from './MainPage';
+import { MainPage } from './MainPage';
 import NewCharts from './NewCharts';
+
 import { Link, Route, Routes } from 'react-router-dom';
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import AddchartIcon from '@mui/icons-material/Addchart';
+
+import logo from '../assets/logo.png'
+import Dashboard from './Dashboard';
+import { drawer } from './constant';
 
 const drawerWidth = 240;
 function MasterLayout(props) {
@@ -39,42 +44,8 @@ function MasterLayout(props) {
             setMobileOpen(!mobileOpen);
         }
     };
-     const menuItems = [{
-        id: 1,
-        label: "Dashboard",
-        path: "/",
-        icon: <SpaceDashboardIcon />
-
-    },
-    {
-        id: 2,
-        label: "New Chart",
-        path: "/new-chart",
-        icon: <AddchartIcon />
-
-    },
-    ]
-    console.log(menuItems)
-    const drawer = (
-        <div>
-            <Toolbar />
-            <Divider />
-            <List>
-            {menuItems.map((text, index) => (
-                <ListItem key={index} disablePadding>
-                    <ListItemButton  component={Link} to={text.path}>
-                        <ListItemIcon>
-                            {text.icon}
-                        </ListItemIcon>
-                        <ListItemText primary={text.label} />
-                    </ListItemButton>
-                </ListItem>
-            ))}
-            </List>
-
-        </div>
-    );
-
+  
+    
     // Remove this const when copying and pasting into your project.
     const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -95,7 +66,7 @@ function MasterLayout(props) {
                         <MenuIcon />
                     </IconButton>
 
-                    <img src="http://localhost:3000/Novartis-Logo.png" alt="Logo" style={{ marginBottom: "5px", width: 130, height: 'auto', marginRight: 10 }} />
+                    <img src={logo} alt="Logo" style={{ marginBottom: "5px", width: 130, height: 'auto', marginRight: 10 }} />
 
                     <Typography variant="h6" component="div" sx={{ marginRight: 7, flexGrow: 1, textAlign: 'center' }}>
                         Data Reconciliation Dashboard
@@ -141,13 +112,11 @@ function MasterLayout(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-
                 <Routes>
                     <Route path="" element={<MainPage />}></Route>
                     <Route path="new-chart" element={<NewCharts />}></Route>
-
+                    <Route path="apex-chart" element={<Dashboard />}></Route>
                 </Routes>
-
             </Box>
         </Box>
     );

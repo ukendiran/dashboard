@@ -6,21 +6,30 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { Toolbar } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-export   const draweritems = [
-    {
-        id: 1,
-        path: "/",
-        label: "Dashboard",
-        icon: <SpaceDashboardIcon />
-    },
-    {
-        id: 2,
-        path: "/charts",
-        label: "New Charts",
-        icon: <AddchartIcon />
-    },
+export const menuItems = [{
+    id: 1,
+    label: "Dashboard",
+    path: "/",
+    icon: <SpaceDashboardIcon />
 
+},
+{
+    id: 2,
+    label: "MUI Chart",
+    path: "/new-chart",
+    icon: <AddchartIcon />
+
+},
+{
+    id: 3,
+    label: "Apex Charts",
+    path: "/apex-chart",
+    icon: <AddchartIcon />
+
+},
 ]
 
 export const drawer = (
@@ -28,13 +37,13 @@ export const drawer = (
         <Toolbar />
         <Divider />
         <List>
-            {draweritems.map((text, index) => (
+            {menuItems.map((text, index) => (
                 <ListItem key={index} disablePadding>
-                    <ListItemButton>
+                    <ListItemButton component={Link} to={text.path}>
                         <ListItemIcon>
                             {text.icon}
                         </ListItemIcon>
-                        <ListItemText primary={text?.label} />
+                        <ListItemText primary={text.label} />
                     </ListItemButton>
                 </ListItem>
             ))}
