@@ -3,7 +3,13 @@ import BarChart from "../apexchart/BarChart";
 import PieChart from "../apexchart/PieChart";
     import { FilterComponent } from './FilterComponent';
  import CardChart from '../apexchart/CardChart';
-
+ import PaymentIcon from '@mui/icons-material/Payment';
+ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+ import AddchartIcon from '@mui/icons-material/Addchart';
+ import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Cards } from './Cards';
+import GroupIcon from '@mui/icons-material/Group';
+import PaymentsIcon from '@mui/icons-material/Payments';
 function Dashboard() {
   const [country, setCountry] = React.useState('');
   // Function to update state in the parent component
@@ -47,15 +53,64 @@ function Dashboard() {
       data: [0, 0, 0, 0]
     }
   ];
+  const cardata = [
+    {
+        id: 1,
+        count: "China",
+        desc: "First Name",
+        total: 1
+    },
+    {
+        id: 2,
+        count: "France",
+        desc: "Cost Reference ID",
+        total: 1
+    },
+    {
+        id: 3,
+        count: "South Africa",
+        desc: "Position Reference ID",
+        total: 1
+    },
+    {
+        id: 4,
+        count: "India",
+        desc: "Pay Group Reference ID",
+        total: 1
+    }]
 
   return (
     <>
-      <div className="row">
-        <div className='col-md-6'></div>
+          <div className="container-fluid">
+
+      <div className="row mb-2" >
+        <div className='col-md-6 mt-4 '>
+          <h5>Discrepancies</h5>
+        </div>
         <div className='col-md-6 d-flex justify-content-end'>
           <FilterComponent onCountryChange={handleCountryChange} />
         </div>
       </div>
+</div>
+      <div className="container-fluid">
+                <div className="row mb-3  ">
+
+                    <div className='col-md-12 '>
+                        <div className='row'>
+                            {cardata.map(card => (
+                                <div className='col-md-3 '>
+                                    <Cards carddata={card}  />
+                                </div>
+                            ))}
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid">
+      
       <div className="row">
         <div className="col-md-6 mt-2">
           <div className="card shadow p-3 bg-white rounded">
@@ -78,8 +133,11 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      </div>
+
+      <div className="container-fluid">
       <div className="row">
-        <div className="col-md-6 mt-2">
+        <div className="col-md-6 mt-4">
           <div className="card shadow p-3 bg-white rounded">
             <div className="card-body">
               <div className="card-title">
@@ -89,18 +147,9 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="col-md-6 mt-2">
-          <div className="card shadow p-3 bg-white rounded">
-            <div className="card-body">
-              <div className="card-title">
-                <h3>Discrepancies - Parent Chart</h3>
-                <CardChart />
-              </div>
-            </div>
-          </div>
-        </div>
+         
       </div>
-     
+     </div>
 
     </>
   )

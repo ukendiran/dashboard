@@ -4,18 +4,39 @@ import React from 'react'
 import { FilterComponent } from './FilterComponent';
 import { barchartDataset2, barchartDataset1 } from '../utils/barchartutils';
 import { pie1, pie1data, pie2, pie2data, pie3, pie3data } from '../utils/piechart';
-
-
+ import PaymentIcon from '@mui/icons-material/Payment';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+ 
 
 export const MainPage = () => {
     return (
         <React.Fragment>
-            <div className="row">
+            <div className="row mb-2">
                 <div className='col-md-6'></div>
                 <div className='col-md-6 d-flex justify-content-end'>
                     <FilterComponent />
                 </div>
             </div>
+            <div className="container-fluid">
+                <div className="row mb-3  ">
+
+                    <div className='col-md-12 '>
+                        <div className='row'>
+                            {cardata.map(card => (
+                                <div className='col-md-3 '>
+                                    <Cards carddata={card} />
+                                </div>
+                            ))}
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
             <div className="container-fluid">
 
                 <div className='row'>
