@@ -20,8 +20,8 @@ class CardChart extends React.Component {
         return (
             <div className='row text-center' style={{ "height": "365px" }}>
                 {this.state.chartData && this.state.chartData.map((dataPoint, index) => (
-                    <div className="col-md-6 mt-5">
-                        <div className="card" style={{ "background-color": colorScheme['Category10'][index] }}>
+                    <div className="col-md-6 mt-5" key={index}>
+                        <div className="card" style={{ backgroundColor: colorScheme['Category10'][index] }}>
                             <div className="card-body text-white">
                                 <h5 className="card-title">{dataPoint.name}</h5>
                                 <p className="">{dataPoint.country}</p>

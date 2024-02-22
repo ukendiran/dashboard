@@ -15,7 +15,10 @@ const PieChart = (props) => {
     dataLabels: {
       enabled: true,
       formatter: function (val, opts) {
-        return opts.w.config.labels[opts.seriesIndex] + ":<br/> " + val;
+        return opts.w.config.labels[opts.seriesIndex] + ":\n" + Number(val).toFixed(0)+ "%";
+      },
+      style: {
+        textAlign: 'center', // Align text to the center
       }
     }
   };
