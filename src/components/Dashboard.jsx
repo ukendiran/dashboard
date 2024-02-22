@@ -1,13 +1,8 @@
 import React from 'react'
 import BarChart from "../apexchart/BarChart";
 import PieChart from "../apexchart/PieChart";
-import Chart1 from "../apexchart/Chart1";
-import Chart2 from "../apexchart/Chart2";
-import StackBars from "../apexchart/StackBars";
-import ColorTemplate from "../apexchart/ColorTemplate";
-import { FilterComponent } from './FilterComponent';
-import ChartComponent from '../apexchart/ChartComponent';
-import CardChart from '../apexchart/CardChart';
+    import { FilterComponent } from './FilterComponent';
+ import CardChart from '../apexchart/CardChart';
 
 function Dashboard() {
   const [country, setCountry] = React.useState('');
