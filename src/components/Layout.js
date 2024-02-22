@@ -69,7 +69,7 @@ function MasterLayout(props) {
         {
             id: 1,
             label: "Dashboard",
-            path: "/",
+            path: "",
             icon: <AddchartIcon />
 
         },
@@ -146,13 +146,10 @@ function MasterLayout(props) {
                 >
                     <Toolbar />
                     <Divider />
-                    <List  style={{paddingLeft:"10px !important"}}>
+                    <List   className="px-2  ">
                         {menuItems.map((item, index) => {
-                            const isActive = location.pathname === item.path;
-                            const backgroundColor = isActive ? 'white' : "#387ADF";
-                            console.log("backgroundColor", backgroundColor)
-                            return (
-                                <ListItem key={index} disablePadding sx={{ background: backgroundColor }}>
+                             return (
+                                <ListItem key={index} disablePadding sx={{backgroundColor:"white",color:"black" , borderRadius:"10px"}}>
                                     <ListItemButton component={Link} to={item.path}>
                                         <ListItemIcon>
                                             {item.icon}
@@ -180,13 +177,10 @@ function MasterLayout(props) {
                 >
                     <Toolbar />
                     <Divider />
-                    <List>
+                    <List  className="px-2  ">
                         {menuItems.map((item, index) => {
-                            const isActive = location.pathname === item.path;
-                            const backgroundColor = isActive ? { backgroundColor: 'white', color: "black" } : { color: "white", backgroundColor: '#387ADF' };
-                            console.log("backgroundColor", backgroundColor)
-                            return (
-                                <ListItem key={index} className="rounded-3 pb-1" disablePadding sx={{ backgroundColor }}>
+                             return (
+                                <ListItem key={index} disablePadding sx={{backgroundColor:"white",color:"black", borderRadius:"10px"}}>
                                     <ListItemButton component={Link} to={item.path}>
                                         <ListItemIcon>
                                             {item.icon}
@@ -197,7 +191,6 @@ function MasterLayout(props) {
                             );
                         })}
                     </List>
-
                 </Drawer>
             </Box>
 
