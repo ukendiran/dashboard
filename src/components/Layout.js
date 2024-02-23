@@ -23,8 +23,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Link } from 'react-router-dom';
-  
-  
+
+
 const drawerWidth = 240;
 
 
@@ -77,7 +77,7 @@ function MasterLayout(props) {
 
 
     const container = window !== undefined ? () => window().document.body : undefined;
- 
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -99,7 +99,7 @@ function MasterLayout(props) {
                     </IconButton>
                     <img src={logo} alt="Logo" style={{ marginBottom: "5px", width: 130, height: 'auto', marginRight: 25 }} />
 
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' ,color:"black" }}>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center', color: "black" }}>
                         Data Reconciliation Dashboard
                     </Typography>
 
@@ -146,10 +146,10 @@ function MasterLayout(props) {
                 >
                     <Toolbar />
                     <Divider />
-                    <List   className="px-2  ">
+                    <List className="px-2  ">
                         {menuItems.map((item, index) => {
-                             return (
-                                <ListItem key={index} disablePadding sx={{backgroundColor:"white",color:"black" , borderRadius:"10px"}}>
+                            return (
+                                <ListItem key={index} disablePadding sx={{ backgroundColor: "white", color: "black", borderRadius: "10px" }}>
                                     <ListItemButton component={Link} to={item.path}>
                                         <ListItemIcon>
                                             {item.icon}
@@ -177,10 +177,10 @@ function MasterLayout(props) {
                 >
                     <Toolbar />
                     <Divider />
-                    <List  className="px-2  ">
+                    <List className="px-2  ">
                         {menuItems.map((item, index) => {
-                             return (
-                                <ListItem key={index} disablePadding sx={{backgroundColor:"white",color:"black", borderRadius:"10px"}}>
+                            return (
+                                <ListItem key={index} disablePadding sx={{ backgroundColor: "white", color: "black", borderRadius: "10px" }}>
                                     <ListItemButton component={Link} to={item.path}>
                                         <ListItemIcon>
                                             {item.icon}
@@ -203,7 +203,6 @@ function MasterLayout(props) {
                 <Toolbar />
                 <Routes>
                     <Route path="" element={<Dashboard />}></Route>
-
                 </Routes>
             </Box>
         </Box>
